@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
 
 interface LoadingScreenProps {
   onComplete: () => void
@@ -12,13 +12,17 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const [displayedText, setDisplayedText] = useState('')
   const [showCursor, setShowCursor] = useState(true)
 
-  const bootSequence = [
+  const bootSequence = useMemo(() => [
     '[OK] Initializing system...',
     '[OK] Loading security protocols...',
     '[OK] System ready.',
     '',
     'Welcome to ZULFIANA_RAHMI Portfolio',
-  ]
+  ], [])
+
+  const handleComplete = useCallback(() => {
+    onComplete()
+  }, [onComplete])
 
   useEffect(() => {
     const cursorInterval = setInterval(() => {
@@ -49,10 +53,10 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       return () => clearInterval(typingInterval)
     } else {
       setTimeout(() => {
-        onComplete()
+        handleComplete()
       }, 100)
     }
-  }, [currentLine, bootSequence, onComplete])
+  }, [currentLine, bootSequence, handleComplete])
 
   return (
     <AnimatePresence>
