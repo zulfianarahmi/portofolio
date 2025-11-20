@@ -1,8 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FiLinkedin, FiMail, FiPhone, FiMapPin, FiCloud, FiServer, FiShield, FiArrowRight, FiCode, FiDatabase, FiBriefcase, FiBook, FiAward, FiUsers, FiTrendingUp, FiLock, FiActivity, FiLayers } from 'react-icons/fi'
-import { Badge, Navigation } from '@/components/ui'
+import { FiLinkedin, FiMail, FiPhone, FiMapPin, FiCloud, FiShield, FiArrowRight, FiCode, FiBriefcase, FiBook, FiAward, FiUsers, FiTrendingUp, FiLock, FiActivity, FiLayers } from 'react-icons/fi'
+import { Navigation } from '@/components/ui'
 import { useRef, useState } from 'react'
 import LockScreen from '@/components/LockScreen'
 import LoadingScreen from '@/components/LoadingScreen'
@@ -623,7 +623,7 @@ export default function Home() {
                       <FiBook className="text-white text-2xl" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">Bachelor's Degree in Information Systems</h3>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">Bachelor&apos;s Degree in Information Systems</h3>
                       <p className="text-gray-600 dark:text-gray-400">Universitas Terbuka</p>
                       <p className="text-sm text-gray-500 dark:text-gray-500">09/2022 – Present</p>
                     </div>
@@ -707,13 +707,13 @@ export default function Home() {
             >
               <h2 className="text-6xl md:text-8xl font-black mb-6">
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                  Let's
+                  Let&apos;s
                 </span>
                 <br />
                 <span className="text-gray-900 dark:text-white">Connect</span>
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400">
-                Get in touch and let's collaborate
+                Get in touch and let&apos;s collaborate
               </p>
             </motion.div>
 

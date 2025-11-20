@@ -52,7 +52,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
         onComplete()
       }, 100)
     }
-  }, [currentLine])
+  }, [currentLine, bootSequence, onComplete])
 
   return (
     <AnimatePresence>

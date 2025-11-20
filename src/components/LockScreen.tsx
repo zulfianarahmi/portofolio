@@ -157,7 +157,7 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
                   Press Enter to unlock
                 </p>
                 <p className="text-gray-600 text-xs font-mono">
-                  Hint: Try "zulfiana", "rahmi", or apapun yg zulfiana suka
+                  Hint: Try &quot;zulfiana&quot;, &quot;rahmi&quot;, or apapun yg zulfiana suka
                 </p>
               </motion.div>
             )}
