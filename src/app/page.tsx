@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FiLinkedin, FiMail, FiPhone, FiMapPin, FiCloud, FiShield, FiArrowRight, FiCode, FiBriefcase, FiBook, FiAward, FiUsers, FiTrendingUp, FiLock, FiActivity, FiLayers, FiGithub } from 'react-icons/fi'
+import { FiLinkedin, FiMail, FiCloud, FiShield, FiArrowRight, FiCode, FiBriefcase, FiBook, FiAward, FiUsers, FiTrendingUp, FiLock, FiActivity, FiLayers, FiGithub } from 'react-icons/fi'
 import { Navigation } from '@/components/ui'
 import { useRef, useState } from 'react'
 import LockScreen from '@/components/LockScreen'
@@ -730,8 +730,6 @@ export default function Home() {
                 { Icon: FiLinkedin, label: 'LinkedIn', value: 'www.linkedin.com/in/zulfiana-rahmin', href: 'https://www.linkedin.com/in/zulfiana-rahmin', borderClass: 'border-blue-200 dark:border-blue-800', bgClass: 'bg-blue-500' },
                 { Icon: FiMail, label: 'Email', value: 'zulfianarahmi4@gmail.com', href: 'mailto:zulfianarahmi4@gmail.com', borderClass: 'border-purple-200 dark:border-purple-800', bgClass: 'bg-purple-500' },
                 { Icon: FiGithub, label: 'GitHub', value: 'github.com/zulfianarahmi', href: 'https://github.com/zulfianarahmi', borderClass: 'border-gray-200 dark:border-gray-800', bgClass: 'bg-gray-700' },
-                { Icon: FiPhone, label: 'Phone', value: '0895-3185-3156', href: 'tel:+6289531853156', borderClass: 'border-pink-200 dark:border-pink-800', bgClass: 'bg-pink-500' },
-                { Icon: FiMapPin, label: 'Location', value: 'Depok, West Java', href: '#', borderClass: 'border-gray-200 dark:border-gray-800', bgClass: 'bg-gray-500' },
               ].map((contact, i) => {
                 const ContactIcon = contact.Icon
                 return (
