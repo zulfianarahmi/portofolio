@@ -1,17 +1,98 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FiLinkedin, FiMail, FiCloud, FiShield, FiArrowRight, FiCode, FiBriefcase, FiBook, FiAward, FiUsers, FiTrendingUp, FiLock, FiActivity, FiLayers, FiGithub } from 'react-icons/fi'
+import { FiLinkedin, FiMail, FiCloud, FiShield, FiArrowRight, FiCode, FiBriefcase, FiBook, FiAward, FiUsers, FiTrendingUp, FiLock, FiActivity, FiLayers, FiGithub, FiExternalLink, FiFileText, FiLoader } from 'react-icons/fi'
 import { Navigation } from '@/components/ui'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import LockScreen from '@/components/LockScreen'
+
+interface MediumArticle {
+  title: string
+  url: string
+  description: string
+  date: string
+  category: string
+}
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isLocked, setIsLocked] = useState(true)
+  const [mediumArticles, setMediumArticles] = useState<MediumArticle[]>([])
+  const [isLoadingArticles, setIsLoadingArticles] = useState(true)
+  const [articlesError, setArticlesError] = useState<string | null>(null)
 
   const handleUnlock = () => {
     setIsLocked(false)
+  }
+
+  // Fetch Medium articles function
+  const fetchArticles = async () => {
+    try {
+      setIsLoadingArticles(true)
+      setArticlesError(null)
+      // Add timestamp to bypass cache for real-time updates
+      const response = await fetch(`/api/medium?t=${Date.now()}`, {
+        cache: 'no-store', // Force fresh fetch
+        headers: {
+          'Cache-Control': 'no-cache'
+        }
+      })
+      if (!response.ok) {
+        throw new Error('Failed to fetch articles')
+      }
+      const data = await response.json()
+      console.log('Fetched Medium articles:', data.articles?.length || 0, 'articles')
+      if (data.articles && data.articles.length > 0) {
+        setMediumArticles(data.articles)
+        console.log('Articles loaded:', data.articles.map((a: MediumArticle) => a.title))
+      } else {
+        console.warn('No articles found in response')
+        setMediumArticles([])
+      }
+    } catch (error) {
+      console.error('Error fetching Medium articles:', error)
+      setArticlesError('Failed to load articles. Please try again later.')
+      setMediumArticles([])
+    } finally {
+      setIsLoadingArticles(false)
+    }
+  }
+
+  useEffect(() => {
+    if (!isLocked) {
+      fetchArticles()
+      
+      // Refresh articles every 5 minutes for real-time updates
+      const interval = setInterval(() => {
+        fetchArticles()
+      }, 5 * 60 * 1000) // 5 minutes
+      
+      return () => clearInterval(interval)
+    }
+  }, [isLocked])
+
+  // Helper function to get icon based on category/title
+  const getArticleIcon = (article: MediumArticle) => {
+    const titleLower = article.title.toLowerCase()
+    const categoryLower = article.category.toLowerCase()
+    
+    if (categoryLower.includes('penetration') || titleLower.includes('vapt') || titleLower.includes('owasp')) {
+      return { Icon: FiLock, borderClass: 'border-blue-200 dark:border-blue-800', bgClass: 'bg-blue-100 dark:bg-blue-900/50', iconClass: 'text-blue-600 dark:text-blue-400' }
+    }
+    if (categoryLower.includes('machine learning') || titleLower.includes('phishing') || titleLower.includes('ml')) {
+      return { Icon: FiLayers, borderClass: 'border-purple-200 dark:border-purple-800', bgClass: 'bg-purple-100 dark:bg-purple-900/50', iconClass: 'text-purple-600 dark:text-purple-400' }
+    }
+    if (categoryLower.includes('automation') || titleLower.includes('chatbot') || titleLower.includes('telegram')) {
+      return { Icon: FiCode, borderClass: 'border-pink-200 dark:border-pink-800', bgClass: 'bg-pink-100 dark:bg-pink-900/50', iconClass: 'text-pink-600 dark:text-pink-400' }
+    }
+    if (categoryLower.includes('security operations') || categoryLower.includes('secops') || titleLower.includes('workflow') || titleLower.includes('n8n')) {
+      return { Icon: FiActivity, borderClass: 'border-blue-200 dark:border-blue-800', bgClass: 'bg-blue-100 dark:bg-blue-900/50', iconClass: 'text-blue-600 dark:text-blue-400' }
+    }
+    if (titleLower.includes('malware') || titleLower.includes('reverse engineering')) {
+      return { Icon: FiShield, borderClass: 'border-purple-200 dark:border-purple-800', bgClass: 'bg-purple-100 dark:bg-purple-900/50', iconClass: 'text-purple-600 dark:text-purple-400' }
+    }
+    // Default
+    return { Icon: FiFileText, borderClass: 'border-purple-200 dark:border-purple-800', bgClass: 'bg-purple-100 dark:bg-purple-900/50', iconClass: 'text-purple-600 dark:text-purple-400' }
   }
 
   const navItems = [
@@ -19,6 +100,7 @@ export default function Home() {
     { label: 'Experience', href: '#experience' },
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
+    { label: 'Blog', href: '#blog' },
     { label: 'Contact', href: '#contact' },
   ]
 
@@ -137,7 +219,7 @@ export default function Home() {
                 transition={{ delay: 0.4 }}
                 className="text-lg text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed"
               >
-                Enthusiastic learner in cybersecurity with strong foundation in System Administration and Cloud Computing.
+                Passionate cybersecurity professional specializing in Security Operations (SecOps), Blue Teaming, and Cyber Defense.
               </motion.p>
 
               {/* Social Links - Diagonal Layout */}
@@ -274,7 +356,7 @@ export default function Home() {
               <div className="p-8 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-3xl shadow-xl border border-gray-200 dark:border-gray-700 transform rotate-1">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Professional Summary</h3>
                 <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                  An enthusiastic learner in <span className="font-bold text-blue-600 dark:text-blue-400">cybersecurity</span> with a strong foundation in <span className="font-bold text-purple-600 dark:text-purple-400">System Administration</span> and <span className="font-bold text-pink-600 dark:text-pink-400">Cloud Computing</span>. I am dedicated to developing efficient, secure, and scalable systems, and I actively seek opportunities to collaborate and innovate in this field. I have a deep focus on Linux, DevOps, and cybersecurity, and I am eager to apply my skills to build robust defenses against modern threats.
+                  Passionate cybersecurity professional specializing in <span className="font-bold text-blue-600 dark:text-blue-400">Security Operations (SecOps)</span>, <span className="font-bold text-purple-600 dark:text-purple-400">Blue Teaming</span>, and <span className="font-bold text-pink-600 dark:text-pink-400">Cyber Defense</span>. I am dedicated to developing efficient, secure, and scalable systems through hands-on experience in Linux, DevOps, and scripting. My focus is on building robust defenses against modern threats, and I actively seek opportunities to collaborate and innovate in this field.
                 </p>
               </div>
             </motion.div>
@@ -467,7 +549,7 @@ export default function Home() {
                 <h3 className="text-3xl font-bold text-blue-600 dark:text-blue-400">Cybersecurity Fundamentals</h3>
               </div>
               <ul className="space-y-4">
-                {['Cisco Cybersecurity Certified', 'Linux Server Management (Ubuntu)', 'Basic Network Administration'].map((skill, i) => (
+                {['Cisco Cybersecurity Certified', 'Linux Server Management (Ubuntu)', 'Basic Network Administration', 'Incident Triage & Alert Analysis', 'Log Analysis (Splunk/SIEM)'].map((skill, i) => (
                   <motion.li
                     key={skill}
                     initial={{ opacity: 0, x: -20 }}
@@ -499,7 +581,7 @@ export default function Home() {
                 <h3 className="text-2xl font-bold text-purple-600 dark:text-purple-400">Cloud & DevOps</h3>
               </div>
               <ul className="space-y-4">
-                {['Google Cloud Platform (GCP)', 'Oracle Cloud Infrastructure', 'Python Scripting for Automation', 'Bash Shell Scripting'].map((skill, i) => (
+                {['Python Scripting for Automation', 'Bash Shell Scripting', 'Google Cloud Platform (GCP)', 'Oracle Cloud Infrastructure'].map((skill, i) => (
                   <motion.li
                     key={skill}
                     initial={{ opacity: 0, x: -20 }}
@@ -563,20 +645,61 @@ export default function Home() {
           >
             <h2 className="text-5xl md:text-7xl font-black mb-4">
               <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Technical Projects
+                CYBERSECURITY PORTFOLIO
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400">Cybersecurity & development projects</p>
+            <p className="text-xl text-gray-600 dark:text-gray-400">Hands-on Projects & Write-ups</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="space-y-6">
             {[
-              { name: 'Web App Penetration Testing', desc: 'OWASP Juice Shop', Icon: FiLock, borderClass: 'border-blue-200 dark:border-blue-800', bgClass: 'bg-blue-100 dark:bg-blue-900/50', iconClass: 'text-blue-600 dark:text-blue-400' },
-              { name: 'Malware Analysis', desc: 'Reverse Engineering', Icon: FiShield, borderClass: 'border-purple-200 dark:border-purple-800', bgClass: 'bg-purple-100 dark:bg-purple-900/50', iconClass: 'text-purple-600 dark:text-purple-400' },
-              { name: 'Network Penetration Testing', desc: 'Lab Environment', Icon: FiActivity, borderClass: 'border-pink-200 dark:border-pink-800', bgClass: 'bg-pink-100 dark:bg-pink-900/50', iconClass: 'text-pink-600 dark:text-pink-400' },
-              { name: 'Phishing Image Detection', desc: 'Proof-of-Concept', Icon: FiLayers, borderClass: 'border-blue-200 dark:border-blue-800', bgClass: 'bg-blue-100 dark:bg-blue-900/50', iconClass: 'text-blue-600 dark:text-blue-400' },
-              { name: 'Applied Cryptography', desc: 'Analysis', Icon: FiLock, borderClass: 'border-purple-200 dark:border-purple-800', bgClass: 'bg-purple-100 dark:bg-purple-900/50', iconClass: 'text-purple-600 dark:text-purple-400' },
-              { name: 'TechMateBot Cloud Assistant', desc: 'Python/Telegram API', Icon: FiCode, borderClass: 'border-pink-200 dark:border-pink-800', bgClass: 'bg-pink-100 dark:bg-pink-900/50', iconClass: 'text-pink-600 dark:text-pink-400' },
+              { 
+                name: 'VAPT: Membedah OWASP Juice Shop', 
+                bullets: ['Melakukan security assessment pada OWASP Juice Shop menggunakan tools seperti Burp Suite, OWASP ZAP', 'Mengidentifikasi dan memanfaatkan vulnerability OWASP Top 10'], 
+                links: [
+                  { label: 'Medium Write-up', url: 'https://medium.com/@zulfianarahmi4/studi-kasus-vapt-membedah-owasp-juice-shop-39eb210b0af8', icon: FiExternalLink },
+                  { label: 'GitHub Repository', url: 'https://github.com/zulfianarahmi/owasp-juice-shop-vapt-report', icon: FiGithub }
+                ],
+                Icon: FiLock, 
+                borderClass: 'border-blue-200 dark:border-blue-800', 
+                bgClass: 'bg-blue-100 dark:bg-blue-900/50', 
+                iconClass: 'text-blue-600 dark:text-blue-400' 
+              },
+              { 
+                name: 'Phishing Detection: Mendeteksi Situs Phishing dari Tampilan (Machine Learning Experiment)', 
+                bullets: ['Membangun model ML untuk mendeteksi phishing berbasis visual/UI menggunakan Python dan Computer Vision', 'Eksperimen dengan Machine Learning untuk analisis tampilan website secara otomatis'], 
+                links: [
+                  { label: 'Medium Write-up', url: 'https://medium.com/@zulfianarahmi4/mendeteksi-situs-phishing-hanya-dari-tampilan-eksperimen-machine-learning-fb7308c4d27b', icon: FiExternalLink },
+                  { label: 'Google Colab Notebook', url: 'https://colab.research.google.com/drive/1fNftxDWd0zVc6cpSPfUllp4ZrknrzWbd?usp=sharing', icon: FiCode }
+                ],
+                Icon: FiLayers, 
+                borderClass: 'border-purple-200 dark:border-purple-800', 
+                bgClass: 'bg-purple-100 dark:bg-purple-900/50', 
+                iconClass: 'text-purple-600 dark:text-purple-400' 
+              },
+              { 
+                name: 'TechMateBot Cloud Assistant', 
+                bullets: ['Membangun chatbot berbasis Python dan Telegram API untuk asisten cloud computing', 'Implementasi automation workflow dan cloud resource management melalui bot interface'], 
+                links: [
+                  { label: 'Medium Write-up', url: 'https://medium.com/@zulfianarahmi4/techmate-chatbot-pertamaku-6ee692db7bd9', icon: FiExternalLink },
+                  { label: 'GitHub Repository', url: 'https://github.com/zulfianarahmi/TechMateBot', icon: FiGithub }
+                ],
+                Icon: FiCode, 
+                borderClass: 'border-pink-200 dark:border-pink-800', 
+                bgClass: 'bg-pink-100 dark:bg-pink-900/50', 
+                iconClass: 'text-pink-600 dark:text-pink-400' 
+              },
+              { 
+                name: 'Workflow n8n Pertama: "Cyberpulse"', 
+                bullets: ['Membangun workflow automation menggunakan n8n untuk cybersecurity monitoring dan alerting', 'Mengintegrasikan berbagai tools dan services untuk automated security operations'], 
+                links: [
+                  { label: 'Medium Write-up', url: 'https://medium.com/@zulfianarahmi4/workflow-n8n-pertama-cyberpulse-82d8c44c0d10', icon: FiExternalLink }
+                ],
+                Icon: FiActivity, 
+                borderClass: 'border-blue-200 dark:border-blue-800', 
+                bgClass: 'bg-blue-100 dark:bg-blue-900/50', 
+                iconClass: 'text-blue-600 dark:text-blue-400' 
+              },
             ].map((project, i) => {
               const IconComponent = project.Icon
               return (
@@ -586,18 +709,198 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -5, rotate: i % 2 === 0 ? 1 : -1 }}
-                  className={`p-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md rounded-3xl shadow-xl border-2 ${project.borderClass}`}
+                  whileHover={{ scale: 1.02, y: -5, x: i % 2 === 0 ? 5 : -5 }}
+                  className={`block p-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md rounded-3xl shadow-xl border-2 ${project.borderClass} transform ${i % 2 === 0 ? '-rotate-1' : 'rotate-1'} hover:shadow-2xl transition-all`}
                 >
-                  <div className={`p-4 rounded-2xl ${project.bgClass} mb-4 inline-block`}>
-                    <IconComponent className={`${project.iconClass} text-2xl`} />
+                  <div className="flex items-start gap-4 mb-3">
+                    <div className={`p-3 rounded-xl ${project.bgClass} flex-shrink-0`}>
+                      <IconComponent className={`${project.iconClass} text-2xl`} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{project.name}</h3>
+                      <ul className="space-y-2 mb-4">
+                        {project.bullets.map((bullet, j) => (
+                          <li key={j} className="flex items-start text-gray-700 dark:text-gray-300 text-sm">
+                            <span className="w-1.5 h-1.5 bg-current rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="flex flex-wrap gap-3">
+                        {project.links.map((link, j) => {
+                          const LinkIcon = link.icon
+                          return (
+                            <motion.a
+                              key={j}
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              whileHover={{ scale: 1.05, x: 3 }}
+                              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 text-sm font-medium text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-all"
+                            >
+                              <LinkIcon className="text-base" />
+                              <span>{link.label}</span>
+                            </motion.a>
+                          )
+                        })}
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{project.name}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">{project.desc}</p>
                 </motion.div>
               )
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Blog & Articles Section - Medium Posts */}
+      <section id="blog" className="relative py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-tr from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"></div>
+        
+        {/* Cybersecurity Background */}
+        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]">
+          <div className="h-full w-full bg-[linear-gradient(rgba(0,255,65,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <div className="flex items-center gap-4 mb-4">
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500">
+                <FiFileText className="text-white text-4xl" />
+              </div>
+              <div>
+                <h2 className="text-5xl md:text-7xl font-black mb-2">
+                  <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    BLOG & ARTICLES
+                  </span>
+                </h2>
+                <p className="text-xl text-gray-600 dark:text-gray-400">Knowledge sharing & hands-on write-ups on Medium</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <motion.a
+                href="https://medium.com/@zulfianarahmi4"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05, x: 5 }}
+                className="inline-flex items-center gap-2 text-purple-600 dark:text-purple-400 font-medium hover:gap-3 transition-all"
+              >
+                <span>Follow on Medium</span>
+                <FiExternalLink className="text-lg" />
+              </motion.a>
+              <motion.button
+                onClick={fetchArticles}
+                disabled={isLoadingArticles}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 font-medium hover:bg-purple-200 dark:hover:bg-purple-900/70 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                title="Refresh articles"
+              >
+                <FiActivity className={`text-lg ${isLoadingArticles ? 'animate-spin' : ''}`} />
+                <span>Refresh</span>
+              </motion.button>
+            </div>
+          </motion.div>
+
+          {isLoadingArticles ? (
+            <div className="flex items-center justify-center py-20">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                className="p-4 rounded-full bg-purple-100 dark:bg-purple-900/50"
+              >
+                <FiLoader className="text-4xl text-purple-600 dark:text-purple-400" />
+              </motion.div>
+              <span className="ml-4 text-lg text-gray-600 dark:text-gray-400">Loading articles...</span>
+            </div>
+          ) : articlesError ? (
+            <div className="text-center py-20">
+              <p className="text-lg text-red-600 dark:text-red-400 mb-4">{articlesError}</p>
+              <motion.button
+                onClick={() => window.location.reload()}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-6 py-3 rounded-xl bg-purple-600 text-white font-medium hover:bg-purple-700 transition-colors"
+              >
+                Try Again
+              </motion.button>
+            </div>
+          ) : mediumArticles.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-lg text-gray-600 dark:text-gray-400">No articles found.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {mediumArticles.map((article, i) => {
+                const { Icon: ArticleIcon, borderClass, bgClass, iconClass } = getArticleIcon(article)
+                return (
+                  <motion.a
+                    key={article.url}
+                    href={article.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    whileHover={{ scale: 1.05, y: -5, rotate: i % 2 === 0 ? 1 : -1 }}
+                    className={`block p-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md rounded-3xl shadow-xl border-2 ${borderClass} transform ${i % 2 === 0 ? '-rotate-1' : 'rotate-1'} hover:shadow-2xl transition-all h-full flex flex-col`}
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <div className={`p-3 rounded-xl ${bgClass} flex-shrink-0`}>
+                        <ArticleIcon className={`${iconClass} text-2xl`} />
+                      </div>
+                      <span className="px-3 py-1 rounded-full text-xs font-medium bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 border border-purple-200 dark:border-purple-800">
+                        {article.category}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">
+                      {article.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3 flex-grow">
+                      {article.description}
+                    </p>
+                    <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-200 dark:border-gray-700">
+                      <span className="text-xs text-gray-500 dark:text-gray-500">{article.date}</span>
+                      <div className="flex items-center gap-2 text-sm font-medium text-purple-600 dark:text-purple-400">
+                        <span>Read Article</span>
+                        <FiArrowRight className="text-lg" />
+                      </div>
+                    </div>
+                  </motion.a>
+                )
+              })}
+            </div>
+          )}
+
+          {/* Call to Action */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-12 text-center"
+          >
+            <motion.a
+              href="https://medium.com/@zulfianarahmi4"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-lg shadow-xl hover:shadow-2xl transition-all"
+            >
+              <FiFileText className="text-2xl" />
+              <span>View All Articles on Medium</span>
+              <FiExternalLink className="text-xl" />
+            </motion.a>
+          </motion.div>
         </div>
       </section>
 
