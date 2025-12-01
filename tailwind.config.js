@@ -7,7 +7,15 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        mono: ['Courier New', 'Monaco', 'Menlo', 'monospace'],
+      },
+      colors: {
+        'neon-green': '#00ff41',
+        'neon-red': '#ff0040',
+      },
+    },
   },
   plugins: [],
 }
