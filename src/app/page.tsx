@@ -1,6 +1,7 @@
 'use client'
 
-import { FiLinkedin, FiMail, FiGithub, FiExternalLink, FiFileText, FiLoader } from 'react-icons/fi'
+import { FiLoader } from 'react-icons/fi'
+import Image from 'next/image'
 import { Navigation } from '@/components/ui'
 import { useRef, useState, useEffect } from 'react'
 import LockScreen from '@/components/LockScreen'
@@ -159,7 +160,7 @@ export default function Home() {
                   <div className="window-content">
                     {/* Profile Photo */}
                     <div className="profile-photo">
-                      <img src="/profile.png" alt="Profile" />
+                      <Image src="/profile.png" alt="Profile" width={120} height={120} priority />
                     </div>
 
                     {/* Speech Bubble */}
@@ -168,7 +169,7 @@ export default function Home() {
                         <Typewriter text="Hi! Welcome to my portfolio" speed={70} delay={500} />
                       </h2>
                       <p>
-                        I'm a cybersecurity enthusiast passionate about <span className="text-accent">offensive security</span>,{' '}
+                        I&apos;m a cybersecurity enthusiast passionate about <span className="text-accent">offensive security</span>,{' '}
                         <span className="text-accent">defensive operations</span>, and <span className="text-accent">security automation</span>.
                       </p>
                     </div>
