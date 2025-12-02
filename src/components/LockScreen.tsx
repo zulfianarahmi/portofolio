@@ -8,15 +8,6 @@ interface LockScreenProps {
 
 export default function LockScreen({ onUnlock }: LockScreenProps) {
   const [input, setInput] = useState('')
-  const [showCursor, setShowCursor] = useState(true)
-
-  useEffect(() => {
-    const cursorInterval = setInterval(() => {
-      setShowCursor(prev => !prev)
-    }, 500)
-
-    return () => clearInterval(cursorInterval)
-  }, [])
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {

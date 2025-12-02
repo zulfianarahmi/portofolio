@@ -176,11 +176,9 @@ const categories: ProjectCategory[] = [
 
 export default function ProjectTerminal() {
     const [expanded, setExpanded] = useState<string | null>("Malware Analysis")
-    const [activeProject, setActiveProject] = useState<ProjectItem | null>(null)
 
     const toggleCategory = (name: string) => {
         setExpanded(expanded === name ? null : name)
-        setActiveProject(null)
     }
 
     return (
