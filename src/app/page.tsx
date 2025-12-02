@@ -129,6 +129,7 @@ export default function Home() {
     { label: 'experience', href: '#experience' },
     { label: 'skills', href: '#skills' },
     { label: 'projects', href: '#projects' },
+    { label: 'certifications', href: '#certifications' },
     { label: 'writing', href: '#writing' },
     { label: 'contact', href: '#contact' },
   ]
@@ -288,7 +289,6 @@ export default function Home() {
                   <div>
                     <h3 className="text-lg font-semibold mb-4 uppercase text-sm">Cybersecurity</h3>
                     <ul className="space-y-2 text-sm">
-                      <li>• Cisco Cybersecurity Certified</li>
                       <li>• Linux Server Management</li>
                       <li>• Network Administration</li>
                       <li>• Incident Triage & Alert Analysis</li>
@@ -317,7 +317,7 @@ export default function Home() {
               </div>
             </section>
 
-            <div className="divider"></div>
+
 
             {/* Projects Section */}
             <section id="projects" className="section fade-in-up">
@@ -376,6 +376,56 @@ export default function Home() {
                       </div>
                     </div>
                   ))}
+                </div>
+              </div>
+            </section>
+
+            <div className="divider"></div>
+
+            {/* Certifications Section */}
+            <section id="certifications" className="section fade-in-up">
+              <div className="container">
+                <h2 className="text-3xl font-bold mb-12 section-title">Certifications</h2>
+
+                <div className="grid-2 md:grid-cols-4 gap-6">
+                  {/* Cybersecurity */}
+                  <div>
+                    <h3 className="text-lg font-semibold mb-4 uppercase text-sm text-accent">Cybersecurity</h3>
+                    <ul className="space-y-3 text-sm">
+                      <li>• Google - Connect and Protect: Networks and Network Security</li>
+                      <li>• Google - Foundations of Cybersecurity</li>
+                      <li>• Google - Play It Safe: Manage Security Risks</li>
+                      <li>• The Linux Foundation - Understanding OWASP® Top 10</li>
+                      <li>• Cisco - Cybersecurity Essentials</li>
+                    </ul>
+                  </div>
+
+                  {/* Cloud */}
+                  <div>
+                    <h3 className="text-lg font-semibold mb-4 uppercase text-sm text-accent">Cloud</h3>
+                    <ul className="space-y-3 text-sm">
+                      <li>• Oracle Cloud Certified (2024)</li>
+                      <li>• Cisco Cybersecurity & Networking (2024)</li>
+                    </ul>
+                  </div>
+
+                  {/* Data */}
+                  <div>
+                    <h3 className="text-lg font-semibold mb-4 uppercase text-sm text-accent">Data</h3>
+                    <ul className="space-y-3 text-sm">
+                      <li>• IBM Database Admin (2024)</li>
+                      <li>• MySQL Bootcamp (2024)</li>
+                      <li>• Python Data Analysis (2024)</li>
+                    </ul>
+                  </div>
+
+                  {/* Leadership */}
+                  <div>
+                    <h3 className="text-lg font-semibold mb-4 uppercase text-sm text-accent">Leadership</h3>
+                    <ul className="space-y-3 text-sm">
+                      <li>• UNDP +LEADers (2025)</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </section>

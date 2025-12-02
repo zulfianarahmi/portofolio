@@ -62,9 +62,15 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
           </div>
 
           {/* Instructions */}
-          <div className="mt-12">
+          <div className="mt-8 flex flex-col items-center gap-4">
+            <button
+              onClick={onUnlock}
+              className="px-6 py-3 border-1 border-accent text-accent hover:bg-accent hover:text-bg transition-colors font-mono text-sm uppercase tracking-wider"
+            >
+              [ ACCESS SYSTEM ]
+            </button>
             <p className="text-xs text-muted">
-              hint: press [enter] to access portfolio
+              hint: press [enter] or click button
             </p>
           </div>
         </div>
