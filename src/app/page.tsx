@@ -36,7 +36,7 @@ export default function Home() {
       const controller = new AbortController()
       const timeoutId = setTimeout(() => {
         if (!controller.signal.aborted) {
-          controller.abort()
+          controller.abort('Request timeout after 10 seconds')
         }
       }, 10000) // 10s timeout
 

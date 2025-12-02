@@ -48,12 +48,6 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
 
           {/* Prompt */}
           <div className="space-y-4">
-            <p className="text-sm">
-              <span className="text-accent">$ </span>
-              <span className="text-muted">press enter to continue</span>
-              {showCursor && <span className="text-fg">█</span>}
-            </p>
-
             {input && (
               <p className="text-sm text-muted">
                 {input}

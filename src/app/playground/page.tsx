@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import ArcadeCard from '@/components/ui/ArcadeCard'
 import ProjectTerminal from '@/components/ui/ProjectTerminal'
 import Typewriter from '@/components/Typewriter'
@@ -26,11 +27,6 @@ export default function PlaygroundPage() {
             <main className="flex-1 container mx-auto px-4 py-12">
                 {/* Hero Section */}
                 <div className="text-center mb-16">
-                    <h1 className="text-3xl md:text-5xl font-bold mb-6 font-mono">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-                            Security Research & Development
-                        </span>
-                    </h1>
                     <div className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
                         <p className="mb-4">
                             Explore my active security research, CTF writeups, and development projects.
@@ -50,21 +46,48 @@ export default function PlaygroundPage() {
                             subtitle="Algorithm & Data Structures"
                             href="https://leetcode.com/u/zulfianarahmi4/"
                             color="yellow"
-                            icon={<span className="text-2xl">⚡</span>}
+                            icon={
+                                <div className="relative w-10 h-10">
+                                    <Image
+                                        src="/icons/algorithm.png"
+                                        alt="Algorithm"
+                                        fill
+                                        className="object-contain"
+                                    />
+                                </div>
+                            }
                         />
                         <ArcadeCard
                             title="TRYHACKME"
                             subtitle="Cybersecurity Training"
                             href="https://tryhackme.com/p/zulfianarahmi4"
                             color="red"
-                            icon={<span className="text-2xl">🛡️</span>}
+                            icon={
+                                <div className="relative w-10 h-10">
+                                    <Image
+                                        src="/icons/security.png"
+                                        alt="Security"
+                                        fill
+                                        className="object-contain"
+                                    />
+                                </div>
+                            }
                         />
                         <ArcadeCard
                             title="CODEWARS"
                             subtitle="Code Challenges"
                             href="https://www.codewars.com/users/zulfianarahmi"
                             color="purple"
-                            icon={<span className="text-2xl">⚔️</span>}
+                            icon={
+                                <div className="relative w-10 h-10">
+                                    <Image
+                                        src="/icons/code.png"
+                                        alt="Code"
+                                        fill
+                                        className="object-contain"
+                                    />
+                                </div>
+                            }
                         />
                     </div>
                 </section>
