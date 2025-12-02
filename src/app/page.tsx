@@ -184,18 +184,34 @@ export default function Home() {
                       <p className="terminal-output">Cyber Security Engineer</p>
                     </div>
 
-                    <div className="flex flex-wrap gap-4">
-                      <a href="https://www.linkedin.com/in/zulfiana-rahmin" target="_blank" rel="noopener noreferrer" className="link-underline">
-                        linkedin
-                      </a>
-                      <a href="https://github.com/zulfianarahmi" target="_blank" rel="noopener noreferrer" className="link-underline">
-                        github
-                      </a>
-                      <a href="mailto:zulfianarahmi4@gmail.com" className="link-underline">
-                        email
-                      </a>
-                      <a href="https://medium.com/@zulfianarahmi4" target="_blank" rel="noopener noreferrer" className="link-underline">
-                        medium
+                    <div className="flex flex-wrap items-center justify-between gap-4">
+                      <div className="flex flex-wrap gap-4">
+                        <a href="https://www.linkedin.com/in/zulfiana-rahmin" target="_blank" rel="noopener noreferrer" className="link-underline">
+                          linkedin
+                        </a>
+                        <a href="https://github.com/zulfianarahmi" target="_blank" rel="noopener noreferrer" className="link-underline">
+                          github
+                        </a>
+                        <a href="mailto:zulfianarahmi4@gmail.com" className="link-underline">
+                          email
+                        </a>
+                        <a href="https://medium.com/@zulfianarahmi4" target="_blank" rel="noopener noreferrer" className="link-underline">
+                          medium
+                        </a>
+                      </div>
+
+                      {/* Download CV Button */}
+                      <a
+                        href="/Zulfiana_Rahmi_cv.pdf"
+                        download="Zulfiana_Rahmi_CV.pdf"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-bg-primary font-semibold rounded hover:opacity-90 transition-opacity"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                          <polyline points="7 10 12 15 17 10"></polyline>
+                          <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download CV
                       </a>
                     </div>
                   </div>
@@ -376,6 +392,16 @@ export default function Home() {
                       </div>
                     </div>
                   ))}
+                </div>
+
+                {/* See All Projects Link */}
+                <div className="text-center mt-12">
+                  <a
+                    href="/playground"
+                    className="inline-flex items-center gap-2 text-accent hover:underline font-semibold"
+                  >
+                    See All Projects →
+                  </a>
                 </div>
               </div>
             </section>

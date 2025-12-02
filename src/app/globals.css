@@ -5,17 +5,17 @@
 @tailwind utilities;
 
 :root {
-  /* Light Theme (Default for now, will switch to dark) */
-  --bg: #ffffff;
-  --fg: #000000;
-  --border: #000000;
-  --accent: #0066ff;
-  --muted: #666666;
-  --surface: #f5f5f5;
+  /* Dark Theme (Default) */
+  --bg: #0a0a0a;
+  --fg: #ffffff;
+  --border: #333333;
+  --accent: #00ff88;
+  --muted: #888888;
+  --surface: #1a1a1a;
   --success: #00ff00;
 }
 
-/* Dark Theme */
+/* Dark Theme (explicit) */
 [data-theme="dark"] {
   --bg: #0a0a0a;
   --fg: #ffffff;
@@ -26,7 +26,7 @@
   --success: #00ff00;
 }
 
-/* Light Theme (explicit) */
+/* Light Theme */
 [data-theme="light"] {
   --bg: #ffffff;
   --fg: #000000;

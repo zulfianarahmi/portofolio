@@ -21,25 +21,25 @@ export default function ArcadeCard({ title, subtitle, href, icon, color = 'blue'
 
     return (
         <Link href={href} target="_blank" className={`
-            group relative block p-6 bg-black/40 border border-gray-800 rounded-xl transition-all duration-300
+            group relative block p-6 bg-surface border-1 rounded-xl transition-all duration-300
             hover:border-opacity-100 hover:-translate-y-1 hover:shadow-xl
             ${colorClasses[color]}
         `}>
             {/* Content */}
             <div className="relative z-10 flex flex-col h-full">
                 <div className="flex items-start justify-between mb-4">
-                    <div className="p-3 bg-white/5 rounded-lg group-hover:bg-white/10 transition-colors text-2xl">
+                    <div className="p-3 bg-surface rounded-lg group-hover:opacity-80 transition-opacity text-2xl">
                         {icon}
                     </div>
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-400">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity text-muted">
                         ↗
                     </div>
                 </div>
 
-                <h3 className="text-lg font-bold mb-1 group-hover:text-white transition-colors">
+                <h3 className="text-lg font-bold mb-1 group-hover:text-accent transition-colors">
                     {title}
                 </h3>
-                <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
+                <p className="text-sm text-muted transition-colors">
                     {subtitle}
                 </p>
             </div>

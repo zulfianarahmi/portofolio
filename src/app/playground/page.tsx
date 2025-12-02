@@ -5,21 +5,40 @@ import Image from 'next/image'
 import ArcadeCard from '@/components/ui/ArcadeCard'
 import ProjectTerminal from '@/components/ui/ProjectTerminal'
 import Typewriter from '@/components/Typewriter'
+import { useState, useEffect } from 'react'
 
 export default function PlaygroundPage() {
+    const [theme, setTheme] = useState<'dark' | 'light'>('dark') // Default dark
+
+    // Theme management
+    useEffect(() => {
+        document.documentElement.setAttribute('data-theme', theme)
+    }, [theme])
+
+    const toggleTheme = () => {
+        setTheme(prev => prev === 'dark' ? 'light' : 'dark')
+    }
+
     return (
         <div className="min-h-screen flex flex-col pb-20">
             {/* Header */}
-            <header className="border-b border-gray-800 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
+            <header className="border-b-1 bg-bg-primary/50 backdrop-blur-sm sticky top-0 z-50">
                 <div className="container mx-auto px-4">
                     <div className="flex items-center justify-between h-16">
-                        <Link href="/" className="text-sm text-gray-400 hover:text-blue-400 transition-colors font-mono">
+                        <Link href="/" className="text-sm text-muted hover:text-accent transition-colors font-mono">
                             ← Back to Portfolio
                         </Link>
-                        <div className="font-mono font-semibold text-gray-200">
+                        <div className="font-mono font-semibold">
                             Security Lab
                         </div>
-                        <div className="w-24"></div>
+                        {/* Theme Toggle */}
+                        <button
+                            onClick={toggleTheme}
+                            className="text-xl hover:scale-110 transition-transform"
+                            aria-label="Toggle theme"
+                        >
+                            {theme === 'dark' ? '🌙' : '☀️'}
+                        </button>
                     </div>
                 </div>
             </header>
@@ -27,11 +46,11 @@ export default function PlaygroundPage() {
             <main className="flex-1 container mx-auto px-4 py-12">
                 {/* Hero Section */}
                 <div className="text-center mb-16">
-                    <div className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    <div className="text-muted max-w-2xl mx-auto leading-relaxed">
                         <p className="mb-4">
                             Explore my active security research, CTF writeups, and development projects.
                         </p>
-                        <div className="inline-block px-4 py-2 bg-white/5 rounded-full border border-white/10 text-sm font-mono text-blue-300">
+                        <div className="inline-block px-4 py-2 bg-surface rounded-full border-1 text-sm font-mono text-accent">
                             <span className="mr-2">⚡</span>
                             <Typewriter text="Zulfiana is currently solving challenges on..." delay={50} />
                         </div>
@@ -95,10 +114,10 @@ export default function PlaygroundPage() {
                 {/* Project Archives */}
                 <section>
                     <div className="flex items-center gap-4 mb-8">
-                        <h2 className="text-xl font-bold text-gray-200">
+                        <h2 className="text-xl font-bold">
                             Research Archives
                         </h2>
-                        <div className="h-px flex-1 bg-gray-800"></div>
+                        <div className="h-px flex-1 border-b-1"></div>
                     </div>
 
                     <ProjectTerminal />

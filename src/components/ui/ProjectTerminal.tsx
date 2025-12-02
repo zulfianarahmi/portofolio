@@ -184,24 +184,24 @@ export default function ProjectTerminal() {
     return (
         <div className="w-full max-w-5xl mx-auto font-mono text-sm">
             {/* Terminal Window */}
-            <div className="bg-[#0a0a0a] border border-gray-800 rounded-lg overflow-hidden shadow-2xl">
+            <div className="bg-surface border-1 rounded-lg overflow-hidden shadow-2xl">
                 {/* Title Bar */}
-                <div className="bg-[#1a1a1a] px-4 py-2 flex items-center justify-between border-b border-gray-800">
+                <div className="bg-bg-primary px-4 py-2 flex items-center justify-between border-b-1">
                     <div className="flex items-center gap-2">
                         <div className="w-3 h-3 rounded-full bg-red-500/50" />
                         <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
                         <div className="w-3 h-3 rounded-full bg-green-500/50" />
                     </div>
-                    <div className="text-gray-500 text-xs">zulfiana@portfolio:~/projects</div>
+                    <div className="text-muted text-xs">zulfiana@portfolio:~/projects</div>
                     <div className="w-16" />
                 </div>
 
                 {/* Content */}
                 <div className="flex flex-col md:flex-row min-h-[500px]">
                     {/* Sidebar */}
-                    <div className="w-full md:w-64 border-r border-gray-800 bg-black/20">
+                    <div className="w-full md:w-64 border-r-1 bg-surface">
                         <div className="p-4">
-                            <div className="mb-4 text-gray-500 text-xs font-bold uppercase tracking-wider">Directories</div>
+                            <div className="mb-4 text-muted text-xs font-bold uppercase tracking-wider">Directories</div>
                             <div className="space-y-1">
                                 {categories.map((cat) => (
                                     <button
@@ -210,8 +210,8 @@ export default function ProjectTerminal() {
                                         className={`
                                             w-full text-left px-3 py-2 rounded-md flex items-center gap-2 transition-all duration-200
                                             ${expanded === cat.name
-                                                ? 'bg-blue-500/10 text-blue-400 border-l-2 border-blue-500'
-                                                : 'text-gray-400 hover:text-gray-200 hover:bg-white/5 border-l-2 border-transparent'}
+                                                ? 'bg-accent/10 text-accent border-l-2 border-accent'
+                                                : 'text-muted hover:text-primary hover:bg-surface border-l-2 border-transparent'}
                                         `}
                                     >
                                         <span className="text-xs">{expanded === cat.name ? '📂' : '📁'}</span>
@@ -223,11 +223,11 @@ export default function ProjectTerminal() {
                     </div>
 
                     {/* Main View Area */}
-                    <div className="flex-1 bg-[#0c0c0c] p-6 overflow-y-auto">
+                    <div className="flex-1 bg-bg-primary p-6 overflow-y-auto">
                         {expanded ? (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                <div className="flex items-center gap-2 mb-8 text-gray-500 border-b border-gray-800 pb-4">
-                                    <span className="text-blue-400">~/projects/{expanded.toLowerCase().replace(/ /g, '-')}</span>
+                                <div className="flex items-center gap-2 mb-8 text-muted border-b-1 pb-4">
+                                    <span className="text-accent">~/projects/{expanded.toLowerCase().replace(/ /g, '-')}</span>
                                     <span className="animate-pulse">_</span>
                                 </div>
 
@@ -235,21 +235,21 @@ export default function ProjectTerminal() {
                                     {categories.find(c => c.name === expanded)?.items.map((item, idx) => (
                                         <div
                                             key={idx}
-                                            className="group relative p-4 border border-gray-800 bg-black/40 rounded-lg hover:border-blue-500/50 hover:bg-blue-500/5 transition-all duration-300"
+                                            className="group relative p-4 border-1 bg-surface rounded-lg hover:border-accent/50 hover:bg-accent/5 transition-all duration-300"
                                         >
                                             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                                                 <div className="flex items-start gap-3">
-                                                    <span className="mt-1 text-blue-500/50 group-hover:text-blue-400 transition-colors">📄</span>
+                                                    <span className="mt-1 text-accent/50 group-hover:text-accent transition-colors">📄</span>
                                                     <div>
-                                                        <h3 className="text-gray-200 font-medium group-hover:text-blue-300 transition-colors">
+                                                        <h3 className="font-medium group-hover:text-accent transition-colors">
                                                             {item.title}
                                                         </h3>
-                                                        <div className="flex gap-4 mt-2 text-xs text-gray-500">
+                                                        <div className="flex gap-4 mt-2 text-xs text-muted">
                                                             {item.github && (
                                                                 <Link
                                                                     href={item.github}
                                                                     target="_blank"
-                                                                    className="flex items-center gap-1 hover:text-white transition-colors"
+                                                                    className="flex items-center gap-1 hover:text-accent transition-colors"
                                                                 >
                                                                     <FaGithub /> GitHub
                                                                 </Link>
@@ -258,7 +258,7 @@ export default function ProjectTerminal() {
                                                                 <Link
                                                                     href={item.medium}
                                                                     target="_blank"
-                                                                    className="flex items-center gap-1 hover:text-white transition-colors"
+                                                                    className="flex items-center gap-1 hover:text-accent transition-colors"
                                                                 >
                                                                     <FaMedium /> Medium
                                                                 </Link>
@@ -272,7 +272,7 @@ export default function ProjectTerminal() {
                                                         <Link
                                                             href={item.github}
                                                             target="_blank"
-                                                            className="px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-xs border border-white/10 hover:border-white/20 transition-all"
+                                                            className="px-3 py-1.5 rounded bg-surface hover:bg-accent/10 text-xs border-1 hover:border-accent transition-all"
                                                         >
                                                             View Code
                                                         </Link>
@@ -284,7 +284,7 @@ export default function ProjectTerminal() {
                                 </div>
                             </div>
                         ) : (
-                            <div className="h-full flex flex-col items-center justify-center text-gray-600">
+                            <div className="h-full flex flex-col items-center justify-center text-muted">
                                 <div className="text-4xl mb-4 opacity-20">⚡</div>
                                 <p>Select a category to view project files</p>
                             </div>
