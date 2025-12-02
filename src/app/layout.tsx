@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Zulfiana Rahmi",
   description: "Cloud & System Administrator Portfolio",
   icons: {
-    icon: '/favicon.png',
+    icon: '/favicon-sakura.png',
   },
 };
 
