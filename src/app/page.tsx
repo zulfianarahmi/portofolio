@@ -170,8 +170,8 @@ export default function Home() {
                         <Typewriter text="Hi! Welcome to my portfolio" speed={70} delay={500} />
                       </h2>
                       <p>
-                        I&apos;m a cybersecurity enthusiast passionate about <span className="text-accent">offensive security</span>,{' '}
-                        <span className="text-accent">defensive operations</span>, and <span className="text-accent">security automation</span>.
+                        Information Systems student with a growing focus on <span className="text-accent">Security Operations (SOC)</span> and{' '}
+                        <span className="text-accent">Penetration Testing</span>. Gained foundational experience in building security automation workflows.
                       </p>
                     </div>
                   </div>
@@ -182,6 +182,7 @@ export default function Home() {
                       <p className="terminal-prompt mb-2">whoami</p>
                       <h1 className="text-2xl md:text-3xl font-bold mb-2">Zulfiana Rahmi 🌸</h1>
                       <p className="terminal-output">Cyber Security Engineer</p>
+                      <p className="text-sm text-muted mt-2">Depok, West Java | 0895-3185-3156</p>
                     </div>
 
                     <div className="flex flex-wrap items-center justify-between gap-4">
@@ -221,6 +222,33 @@ export default function Home() {
 
             <div className="divider"></div>
 
+            {/* About Section */}
+            <section id="about" className="section fade-in-up">
+              <div className="container">
+                <h2 className="text-3xl font-bold mb-12 section-title">About</h2>
+
+                <div className="max-w-4xl">
+                  <div className="card">
+                    <h3 className="text-xl font-semibold mb-4">Education</h3>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-semibold mb-1">Universitas Terbuka</h4>
+                        <p className="text-muted text-sm mb-2">Bachelor&apos;s Degree in Information Systems</p>
+                        <p className="text-xs text-muted">09/2022 – Present</p>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-1">SMK Al Asiyah</h4>
+                        <p className="text-muted text-sm mb-2">Computer Software Engineering</p>
+                        <p className="text-xs text-muted">06/2018 – 06/2021</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <div className="divider"></div>
+
             {/* Experience Section */}
             <section id="experience" className="section fade-in-up">
               <div className="container">
@@ -235,7 +263,10 @@ export default function Home() {
                       <p className="text-sm text-muted">08/2025 – Present</p>
                     </div>
                     <ul className="space-y-2 text-sm">
-                      <li>• Developed and implemented automation workflows for SecOps tasks</li>
+                      <li>• Designed security automation workflows using workflow automation platforms to streamline cybersecurity operations</li>
+                      <li>• Developed automated processes to enhance security operations monitoring and data processing workflows</li>
+                      <li>• Assisted the security team in identifying and automating repetitive manual tasks to improve operational efficiency</li>
+                      <li>• Awarded as a Top Mentee for Soft Skills among 200 interns for demonstrating exceptional adaptability, professional communication, and performance during the internship</li>
                     </ul>
                   </div>
 
@@ -247,10 +278,11 @@ export default function Home() {
                       <p className="text-sm text-muted">Apr 2023 – July 2025</p>
                     </div>
                     <ul className="space-y-2 text-sm">
-                      <li>• Implemented digital document management system, improving file retrieval efficiency by 30%</li>
-                      <li>• Generated 50+ data-driven reports with 99% accuracy</li>
-                      <li>• Maintained 100% financial accuracy for petty cash management</li>
-                      <li>• Improved company-wide data integrity from 95% to 99% within 6 months</li>
+                      <li>• Performed rigorous cross-verification and validation of operational data to ensure 100% accuracy for organizational logistics and reporting</li>
+                      <li>• Managed the secure processing and storage of sensitive organizational documents and personnel records, maintaining strict confidentiality standards</li>
+                      <li>• Oversaw petty cash management and financial record-keeping, ensuring full accountability and accuracy in all transactions</li>
+                      <li>• Implemented standardized digital filing systems that improved information retrieval efficiency and supported overall data organization</li>
+                      <li>• Contributed to the preparation of internal reports and audit documentation, ensuring alignment with organizational protocols</li>
                     </ul>
                   </div>
 
@@ -258,11 +290,11 @@ export default function Home() {
                   <div className="timeline-item">
                     <div className="mb-4">
                       <h3 className="text-xl font-semibold mb-1">Group Leader – Technical A</h3>
-                      <p className="text-muted mb-1">Women in Tech Security Mentorship Program</p>
+                      <p className="text-muted mb-1">Women in Tech Security Mentorship Program 2025</p>
                       <p className="text-sm text-muted">06/2025 – 07/2025</p>
                     </div>
                     <ul className="space-y-2 text-sm">
-                      <li>• Leading Technical Group A in cybersecurity technical track (offensive & defensive)</li>
+                      <li>• Leading Technical Group A in the cybersecurity technical track (offensive & defensive)</li>
                       <li>• Responsible for team coordination, facilitating discussions, and weekly progress updates</li>
                     </ul>
                   </div>
@@ -270,24 +302,29 @@ export default function Home() {
                   {/* Experience 4 */}
                   <div className="timeline-item">
                     <div className="mb-4">
-                      <h3 className="text-xl font-semibold mb-1">Project Manager</h3>
-                      <p className="text-muted mb-1">GDG Polsri Code 1 | Google APAC</p>
-                      <p className="text-sm text-muted">03/2025 – 05/2025</p>
+                      <h3 className="text-xl font-semibold mb-1">Project Manager (GDG Polsri Code 1)</h3>
+                      <p className="text-muted mb-1">Google APAC Community Event</p>
+                      <p className="text-sm text-muted">03/2025 – May 2025</p>
                     </div>
                     <ul className="space-y-2 text-sm">
-                      <li>• Led 3-member cross-functional team, improved task completion rate by 40% using Agile workflows</li>
+                      <li>• Led a 3-member cross-functional team in executing a project for a Google APAC community competition</li>
+                      <li>• Managed project timelines and monitored individual task progress through direct coordination to ensure on-time delivery</li>
+                      <li>• Facilitated team communication and brainstorming sessions to maintain project alignment and resolve bottlenecks</li>
+                      <li>• Utilized Agile-inspired workflows and tools like Jira to track team completion rates and maintain organized documentation</li>
                     </ul>
                   </div>
 
                   {/* Experience 5 */}
                   <div className="timeline-item">
                     <div className="mb-4">
-                      <h3 className="text-xl font-semibold mb-1">PM & Backend Developer</h3>
-                      <p className="text-muted mb-1">GDG Bootcamp - Gunadarma</p>
+                      <h3 className="text-xl font-semibold mb-1">Project Manager & Backend Developer (Tim 2)</h3>
+                      <p className="text-muted mb-1">Google Developer Group Bootcamp - Universitas Gunardarma</p>
                       <p className="text-sm text-muted">03/2025</p>
                     </div>
                     <ul className="space-y-2 text-sm">
-                      <li>• Led 2-member team, built CRUD APIs with Node.js/Express/TypeScript, reduced task time by 25%</li>
+                      <li>• Led a 2-member team to develop a &quot;Notely&quot; backend service, ensuring all milestones were met within a 1-month intensive bootcamp timeline</li>
+                      <li>• Contributed to the codebase by refining and editing core backend logic using Node.js and Express, ensuring the API remained functional for the team&apos;s requirements</li>
+                      <li>• Managed the project&apos;s structure and coordinated daily updates to maintain development momentum and clear communication between team members</li>
                     </ul>
                   </div>
                 </div>
@@ -303,22 +340,21 @@ export default function Home() {
 
                 <div className="grid-3">
                   <div>
-                    <h3 className="text-lg font-semibold mb-4 uppercase text-sm">Cybersecurity</h3>
+                    <h3 className="text-lg font-semibold mb-4 uppercase text-sm">Cybersecurity Fundamentals</h3>
                     <ul className="space-y-2 text-sm">
-                      <li>• Linux Server Management</li>
-                      <li>• Network Administration</li>
-                      <li>• Incident Triage & Alert Analysis</li>
-                      <li>• Log Analysis (Splunk/SIEM)</li>
+                      <li>• Foundational SOC Operations</li>
+                      <li>• Basic Network Security & Administration</li>
+                      <li>• Web Application Security Concepts (OWASP)</li>
                     </ul>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold mb-4 uppercase text-sm">Cloud & DevOps</h3>
+                    <h3 className="text-lg font-semibold mb-4 uppercase text-sm">Automation & Tools</h3>
                     <ul className="space-y-2 text-sm">
-                      <li>• Python Scripting for Automation</li>
-                      <li>• Bash Shell Scripting</li>
-                      <li>• Google Cloud Platform (GCP)</li>
-                      <li>• Oracle Cloud Infrastructure</li>
+                      <li>• Workflow Automation (n8n)</li>
+                      <li>• Python Scripting for Task Automation</li>
+                      <li>• Basic Bash Shell Scripting</li>
+                      <li>• Google Cloud & Oracle Cloud Infrastructure</li>
                     </ul>
                   </div>
 
@@ -327,6 +363,7 @@ export default function Home() {
                     <ul className="space-y-2 text-sm">
                       <li>• Agile Project Management (Jira)</li>
                       <li>• Cross-functional Team Coordination</li>
+                      <li>• Team Facilitation & Progress Tracking</li>
                     </ul>
                   </div>
                 </div>
@@ -343,53 +380,63 @@ export default function Home() {
                 <div className="grid-2">
                   {[
                     {
-                      title: 'VAPT: Membedah OWASP Juice Shop',
-                      description: 'Security assessment pada OWASP Juice Shop menggunakan Burp Suite dan OWASP ZAP. Mengidentifikasi dan memanfaatkan vulnerability OWASP Top 10.',
+                      title: 'Web Application Penetration Testing (OWASP Juice Shop)',
+                      description: 'Security assessment on OWASP Juice Shop identifying and exploiting vulnerabilities from OWASP Top 10.',
                       links: [
                         { label: 'medium', url: 'https://medium.com/@zulfianarahmi4/studi-kasus-vapt-membedah-owasp-juice-shop-39eb210b0af8' },
                         { label: 'github', url: 'https://github.com/zulfianarahmi/owasp-juice-shop-vapt-report' }
                       ]
                     },
                     {
-                      title: 'Phishing Detection: Machine Learning Experiment',
-                      description: 'Membangun model ML untuk mendeteksi phishing berbasis visual/UI menggunakan Python dan Computer Vision.',
+                      title: 'Phishing Image Detection (Proof-of-Concept)',
+                      description: 'Building ML model to detect phishing sites based on visual/UI using Python and Computer Vision.',
                       links: [
                         { label: 'medium', url: 'https://medium.com/@zulfianarahmi4/mendeteksi-situs-phishing-hanya-dari-tampilan-eksperimen-machine-learning-fb7308c4d27b' },
                         { label: 'colab', url: 'https://colab.research.google.com/drive/1fNftxDWd0zVc6cpSPfUllp4ZrknrzWbd?usp=sharing' }
                       ]
                     },
                     {
-                      title: 'TechMateBot Cloud Assistant',
-                      description: 'Chatbot berbasis Python dan Telegram API untuk asisten cloud computing. Implementasi automation workflow dan cloud resource management.',
+                      title: 'Malware Analysis & Reverse Engineering',
+                      description: 'Analysis of malware samples and reverse engineering techniques to understand attack vectors and behavior.',
+                      links: []
+                    },
+                    {
+                      title: 'Network Penetration Testing (Lab Environment)',
+                      description: 'Conducting network security assessments in controlled lab environments to identify and exploit network vulnerabilities.',
+                      links: []
+                    },
+                    {
+                      title: 'Applied Cryptography Analysis',
+                      description: 'Research and analysis of cryptographic implementations and their security properties.',
+                      links: []
+                    },
+                    {
+                      title: 'TechMateBot Cloud Assistant (Python/Telegram API)',
+                      description: 'Chatbot based on Python and Telegram API for cloud computing assistant. Implementation of automation workflow and cloud resource management.',
                       links: [
                         { label: 'medium', url: 'https://medium.com/@zulfianarahmi4/techmate-chatbot-pertamaku-6ee692db7bd9' },
                         { label: 'github', url: 'https://github.com/zulfianarahmi/TechMateBot' }
-                      ]
-                    },
-                    {
-                      title: 'Workflow n8n: CyberPulse',
-                      description: 'Workflow automation menggunakan n8n untuk cybersecurity monitoring dan alerting. Mengintegrasikan berbagai tools untuk automated security operations.',
-                      links: [
-                        { label: 'medium', url: 'https://medium.com/@zulfianarahmi4/workflow-n8n-pertama-cyberpulse-82d8c44c0d10' }
                       ]
                     }
                   ].map((project, i) => (
                     <div key={i} className="card">
                       <h3 className="text-lg font-semibold mb-3">{project.title}</h3>
                       <p className="text-sm mb-4 text-muted">{project.description}</p>
-                      <div className="flex flex-wrap gap-3">
-                        {project.links.map((link, j) => (
-                          <a
-                            key={j}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm link-underline"
-                          >
-                            {link.label} →
-                          </a>
-                        ))}
-                      </div>
+                      {project.links && project.links.length > 0 ? (
+                        <div className="flex flex-wrap gap-3">
+                          {project.links.map((link, j) => (
+                            <a
+                              key={j}
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm link-underline"
+                            >
+                              {link.label} →
+                            </a>
+                          ))}
+                        </div>
+                      ) : null}
                     </div>
                   ))}
                 </div>
@@ -418,11 +465,11 @@ export default function Home() {
                   <div>
                     <h3 className="text-lg font-semibold mb-4 uppercase text-sm text-accent">Cybersecurity</h3>
                     <ul className="space-y-3 text-sm">
-                      <li>• Google - Connect and Protect: Networks and Network Security</li>
-                      <li>• Google - Foundations of Cybersecurity</li>
-                      <li>• Google - Play It Safe: Manage Security Risks</li>
-                      <li>• The Linux Foundation - Understanding OWASP® Top 10</li>
-                      <li>• Cisco - Cybersecurity Essentials</li>
+                      <li>• Google - Connect and Protect: Networks and Network Security (Agustus 2025)</li>
+                      <li>• Google - Foundations of Cybersecurity (Agustus 2025)</li>
+                      <li>• Google - Play It Safe: Manage Security Risks (Agustus 2025)</li>
+                      <li>• The Linux Foundation - Understanding the OWASP® Top 10 Security Threats SKF100</li>
+                      <li>• Cisco - Cybersecurity Essentials (Juli 2024)</li>
                     </ul>
                   </div>
 
@@ -535,6 +582,18 @@ export default function Home() {
                       <a href="mailto:zulfianarahmi4@gmail.com" className="link-underline">
                         zulfianarahmi4@gmail.com
                       </a>
+                    </div>
+
+                    <div>
+                      <p className="text-sm text-muted mb-2 uppercase">Phone</p>
+                      <a href="tel:089531853156" className="link-underline">
+                        0895-3185-3156
+                      </a>
+                    </div>
+
+                    <div>
+                      <p className="text-sm text-muted mb-2 uppercase">Location</p>
+                      <p className="text-sm">Depok, West Java</p>
                     </div>
 
                     <div>
