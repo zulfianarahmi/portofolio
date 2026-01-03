@@ -182,7 +182,7 @@ export default function Home() {
                       <p className="terminal-prompt mb-2">whoami</p>
                       <h1 className="text-2xl md:text-3xl font-bold mb-2">Zulfiana Rahmi 🌸</h1>
                       <p className="terminal-output">Cyber Security Engineer</p>
-                      <p className="text-sm text-muted mt-2">Depok, West Java | 0895-3185-3156</p>
+                      <p className="text-sm text-muted mt-2">Depok, West Java, Indonesia</p>
                     </div>
 
                     <div className="flex flex-wrap items-center justify-between gap-4">
@@ -234,12 +234,12 @@ export default function Home() {
                       <div>
                         <h4 className="font-semibold mb-1">Universitas Terbuka</h4>
                         <p className="text-muted text-sm mb-2">Bachelor&apos;s Degree in Information Systems</p>
-                        <p className="text-xs text-muted">09/2022 – Present</p>
+                        <p className="text-xs text-muted">Sep 2022 – Present</p>
                       </div>
                       <div>
                         <h4 className="font-semibold mb-1">SMK Al Asiyah</h4>
                         <p className="text-muted text-sm mb-2">Computer Software Engineering</p>
-                        <p className="text-xs text-muted">06/2018 – 06/2021</p>
+                        <p className="text-xs text-muted">Jun 2018 – Jun 2021</p>
                       </div>
                     </div>
                   </div>
@@ -260,7 +260,7 @@ export default function Home() {
                     <div className="mb-4">
                       <h3 className="text-xl font-semibold mb-1">Cyber Security Engineer (Intern)</h3>
                       <p className="text-muted mb-1">Telkom Indonesia</p>
-                      <p className="text-sm text-muted">08/2025 – Present</p>
+                      <p className="text-sm text-muted">Aug 2025 – Present</p>
                     </div>
                     <ul className="space-y-2 text-sm">
                       <li>• Designed security automation workflows using workflow automation platforms to streamline cybersecurity operations</li>
@@ -275,7 +275,7 @@ export default function Home() {
                     <div className="mb-4">
                       <h3 className="text-xl font-semibold mb-1">Administrative Staff</h3>
                       <p className="text-muted mb-1">PT. Satya Putra Bangsa</p>
-                      <p className="text-sm text-muted">Apr 2023 – July 2025</p>
+                      <p className="text-sm text-muted">Apr 2023 – Jul 2025</p>
                     </div>
                     <ul className="space-y-2 text-sm">
                       <li>• Performed rigorous cross-verification and validation of operational data to ensure 100% accuracy for organizational logistics and reporting</li>
@@ -291,7 +291,7 @@ export default function Home() {
                     <div className="mb-4">
                       <h3 className="text-xl font-semibold mb-1">Group Leader – Technical A</h3>
                       <p className="text-muted mb-1">Women in Tech Security Mentorship Program 2025</p>
-                      <p className="text-sm text-muted">06/2025 – 07/2025</p>
+                      <p className="text-sm text-muted">Jun 2025 – Jul 2025</p>
                     </div>
                     <ul className="space-y-2 text-sm">
                       <li>• Leading Technical Group A in the cybersecurity technical track (offensive & defensive)</li>
@@ -304,7 +304,7 @@ export default function Home() {
                     <div className="mb-4">
                       <h3 className="text-xl font-semibold mb-1">Project Manager (GDG Polsri Code 1)</h3>
                       <p className="text-muted mb-1">Google APAC Community Event</p>
-                      <p className="text-sm text-muted">03/2025 – May 2025</p>
+                      <p className="text-sm text-muted">Mar 2025 – May 2025</p>
                     </div>
                     <ul className="space-y-2 text-sm">
                       <li>• Led a 3-member cross-functional team in executing a project for a Google APAC community competition</li>
@@ -319,7 +319,7 @@ export default function Home() {
                     <div className="mb-4">
                       <h3 className="text-xl font-semibold mb-1">Project Manager & Backend Developer (Tim 2)</h3>
                       <p className="text-muted mb-1">Google Developer Group Bootcamp - Universitas Gunardarma</p>
-                      <p className="text-sm text-muted">03/2025</p>
+                      <p className="text-sm text-muted">Mar 2025</p>
                     </div>
                     <ul className="space-y-2 text-sm">
                       <li>• Led a 2-member team to develop a &quot;Notely&quot; backend service, ensuring all milestones were met within a 1-month intensive bootcamp timeline</li>
@@ -351,7 +351,7 @@ export default function Home() {
                   <div>
                     <h3 className="text-lg font-semibold mb-4 uppercase text-sm">Automation & Tools</h3>
                     <ul className="space-y-2 text-sm">
-                      <li>• Workflow Automation (n8n)</li>
+                      <li>• Workflow Automation Platforms</li>
                       <li>• Python Scripting for Task Automation</li>
                       <li>• Basic Bash Shell Scripting</li>
                       <li>• Google Cloud & Oracle Cloud Infrastructure</li>
@@ -398,17 +398,23 @@ export default function Home() {
                     {
                       title: 'Malware Analysis & Reverse Engineering',
                       description: 'Analysis of malware samples and reverse engineering techniques to understand attack vectors and behavior.',
-                      links: []
+                      links: [
+                        { label: 'coming soon', url: '#' }
+                      ]
                     },
                     {
                       title: 'Network Penetration Testing (Lab Environment)',
                       description: 'Conducting network security assessments in controlled lab environments to identify and exploit network vulnerabilities.',
-                      links: []
+                      links: [
+                        { label: 'coming soon', url: '#' }
+                      ]
                     },
                     {
                       title: 'Applied Cryptography Analysis',
                       description: 'Research and analysis of cryptographic implementations and their security properties.',
-                      links: []
+                      links: [
+                        { label: 'coming soon', url: '#' }
+                      ]
                     },
                     {
                       title: 'TechMateBot Cloud Assistant (Python/Telegram API)',
@@ -465,11 +471,11 @@ export default function Home() {
                   <div>
                     <h3 className="text-lg font-semibold mb-4 uppercase text-sm text-accent">Cybersecurity</h3>
                     <ul className="space-y-3 text-sm">
-                      <li>• Google - Connect and Protect: Networks and Network Security (Agustus 2025)</li>
-                      <li>• Google - Foundations of Cybersecurity (Agustus 2025)</li>
-                      <li>• Google - Play It Safe: Manage Security Risks (Agustus 2025)</li>
-                      <li>• The Linux Foundation - Understanding the OWASP® Top 10 Security Threats SKF100</li>
-                      <li>• Cisco - Cybersecurity Essentials (Juli 2024)</li>
+                      <li>• Google - Connect and Protect: Networks and Network Security (Aug 2025)</li>
+                      <li>• Google - Foundations of Cybersecurity (Aug 2025)</li>
+                      <li>• Google - Play It Safe: Manage Security Risks (Aug 2025)</li>
+                      <li>• The Linux Foundation - Understanding the OWASP® Top 10 Security Threats SKF100 (2024)</li>
+                      <li>• Cisco - Cybersecurity Essentials (Jul 2024)</li>
                     </ul>
                   </div>
 
@@ -585,15 +591,8 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <p className="text-sm text-muted mb-2 uppercase">Phone</p>
-                      <a href="tel:089531853156" className="link-underline">
-                        0895-3185-3156
-                      </a>
-                    </div>
-
-                    <div>
                       <p className="text-sm text-muted mb-2 uppercase">Location</p>
-                      <p className="text-sm">Depok, West Java</p>
+                      <p className="text-sm">Depok, West Java, Indonesia</p>
                     </div>
 
                     <div>
