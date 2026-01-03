@@ -9,6 +9,15 @@ interface LockScreenProps {
 export default function LockScreen({ onUnlock }: LockScreenProps) {
   const [input, setInput] = useState('')
 
+  // Auto-unlock after 3 seconds for better UX
+  useEffect(() => {
+    const autoUnlockTimer = setTimeout(() => {
+      onUnlock()
+    }, 3000)
+
+    return () => clearTimeout(autoUnlockTimer)
+  }, [onUnlock])
+
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.key === 'Enter') {
@@ -55,7 +64,7 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
               [ ACCESS SYSTEM ]
             </button>
             <p className="text-xs text-muted">
-              hint: press [enter] or click button
+              auto-unlocking in 3s... or press [enter] / click button
             </p>
           </div>
         </div>

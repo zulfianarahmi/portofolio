@@ -125,7 +125,7 @@ export default function Home() {
   }
 
   const navItems = [
-    { label: 'about', href: '#about' },
+    { label: 'education', href: '#about' },
     { label: 'experience', href: '#experience' },
     { label: 'skills', href: '#skills' },
     { label: 'projects', href: '#projects' },
@@ -161,7 +161,7 @@ export default function Home() {
                   <div className="window-content">
                     {/* Profile Photo */}
                     <div className="profile-photo">
-                      <Image src="/profile.jpg" alt="Profile" width={120} height={120} priority />
+                      <Image src="/profile.jpg" alt="Profile" width={200} height={200} quality={100} priority className="w-full h-full" />
                     </div>
 
                     {/* Speech Bubble */}
@@ -187,7 +187,7 @@ export default function Home() {
 
                     <div className="flex flex-wrap items-center justify-between gap-4">
                       <div className="flex flex-wrap gap-4">
-                        <a href="https://www.linkedin.com/in/zulfiana-rahmin" target="_blank" rel="noopener noreferrer" className="link-underline">
+                        <a href="https://www.linkedin.com/in/zulfiana-rahmi" target="_blank" rel="noopener noreferrer" className="link-underline">
                           linkedin
                         </a>
                         <a href="https://github.com/zulfianarahmi" target="_blank" rel="noopener noreferrer" className="link-underline">
@@ -222,14 +222,13 @@ export default function Home() {
 
             <div className="divider"></div>
 
-            {/* About Section */}
+            {/* Education Section */}
             <section id="about" className="section fade-in-up">
               <div className="container">
-                <h2 className="text-3xl font-bold mb-12 section-title">About</h2>
+                <h2 className="text-3xl font-bold mb-12 section-title">Education</h2>
 
                 <div className="max-w-4xl">
                   <div className="card">
-                    <h3 className="text-xl font-semibold mb-4">Education</h3>
                     <div className="space-y-4">
                       <div>
                         <h4 className="font-semibold mb-1">Universitas Terbuka</h4>
@@ -597,8 +596,8 @@ export default function Home() {
 
                     <div>
                       <p className="text-sm text-muted mb-2 uppercase">LinkedIn</p>
-                      <a href="https://www.linkedin.com/in/zulfiana-rahmin" target="_blank" rel="noopener noreferrer" className="link-underline">
-                        linkedin.com/in/zulfiana-rahmin
+                      <a href="https://www.linkedin.com/in/zulfiana-rahmi" target="_blank" rel="noopener noreferrer" className="link-underline">
+                        linkedin.com/in/zulfiana-rahmi
                       </a>
                     </div>
 
@@ -615,6 +614,13 @@ export default function Home() {
                         medium.com/@zulfianarahmi4
                       </a>
                     </div>
+
+                    <div>
+                      <p className="text-sm text-muted mb-2 uppercase">TryHackMe</p>
+                      <a href="https://tryhackme.com/p/zulfianarahmi4" target="_blank" rel="noopener noreferrer" className="link-underline">
+                        tryhackme.com/p/zulfianarahmi4
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -624,7 +630,7 @@ export default function Home() {
             <footer className="border-t-1 py-8">
               <div className="container">
                 <p className="text-sm text-muted text-center">
-                  © 2025 Zulfiana Rahmi. Built with Next.js.
+                  © {new Date().getFullYear()} Zulfiana Rahmi. Built with Next.js.
                 </p>
               </div>
             </footer>
