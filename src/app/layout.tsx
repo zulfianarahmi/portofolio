@@ -25,7 +25,11 @@ export const metadata: Metadata = {
     description: "Information Systems student with focus on Security Operations (SOC) and Penetration Testing.",
   },
   icons: {
-    icon: '/favicon-sakura.png',
+    icon: [
+      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: '/favicon.png',
   },
 };
 

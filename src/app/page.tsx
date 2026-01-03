@@ -399,21 +399,21 @@ export default function Home() {
                       title: 'Malware Analysis & Reverse Engineering',
                       description: 'Analysis of malware samples and reverse engineering techniques to understand attack vectors and behavior.',
                       links: [
-                        { label: 'coming soon', url: '#' }
+                        { label: 'view projects', url: '/playground' }
                       ]
                     },
                     {
                       title: 'Network Penetration Testing (Lab Environment)',
                       description: 'Conducting network security assessments in controlled lab environments to identify and exploit network vulnerabilities.',
                       links: [
-                        { label: 'coming soon', url: '#' }
+                        { label: 'view projects', url: '/playground' }
                       ]
                     },
                     {
                       title: 'Applied Cryptography Analysis',
                       description: 'Research and analysis of cryptographic implementations and their security properties.',
                       links: [
-                        { label: 'coming soon', url: '#' }
+                        { label: 'view projects', url: '/playground' }
                       ]
                     },
                     {
