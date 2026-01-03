@@ -161,7 +161,7 @@ export default function Home() {
                   <div className="window-content">
                     {/* Profile Photo */}
                     <div className="profile-photo">
-                      <Image src="/profile.png" alt="Profile" width={120} height={120} priority />
+                      <Image src="/profile.jpg" alt="Profile" width={120} height={120} priority />
                     </div>
 
                     {/* Speech Bubble */}
