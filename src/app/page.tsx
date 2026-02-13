@@ -259,7 +259,7 @@ export default function Home() {
                     <div className="mb-4">
                       <h3 className="text-xl font-semibold mb-1">Cyber Security Engineer (Intern)</h3>
                       <p className="text-muted mb-1">Telkom Indonesia</p>
-                      <p className="text-sm text-muted">Aug 2025 – Present</p>
+                      <p className="text-sm text-muted">Aug 2025 – January 2026</p>
                     </div>
                     <ul className="space-y-2 text-sm">
                       <li>• Designed security automation workflows using workflow automation platforms to streamline cybersecurity operations</li>
@@ -395,10 +395,10 @@ export default function Home() {
                       ]
                     },
                     {
-                      title: 'Malware Analysis & Reverse Engineering',
-                      description: 'Analysis of malware samples and reverse engineering techniques to understand attack vectors and behavior.',
+                      title: 'Automated External Attack Surface Discovery Suite',
+                      description: 'A modular Python-based reconnaissance pipeline designed to automate the initial phases of VAPT (Vulnerability Assessment and Penetration Testing).',
                       links: [
-                        { label: 'view projects', url: '/playground' }
+                        { label: 'medium', url: 'https://medium.com/p/58d2382a82b9?postPublishedType=initial' }
                       ]
                     },
                     {
@@ -409,10 +409,10 @@ export default function Home() {
                       ]
                     },
                     {
-                      title: 'Applied Cryptography Analysis',
-                      description: 'Research and analysis of cryptographic implementations and their security properties.',
+                      title: 'Automated Honeypot Intelligence',
+                      description: 'An automated threat intelligence collection system that combines Honeypot (as bait) with VirusTotal API v3 to perform real-time attacker IP investigation and generate visual PDF-based reports.',
                       links: [
-                        { label: 'view projects', url: '/playground' }
+                        { label: 'medium', url: 'https://medium.com/@zulfianarahmi4/ccb71fd165e5' }
                       ]
                     },
                     {
