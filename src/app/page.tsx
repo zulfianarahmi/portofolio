@@ -254,6 +254,15 @@ export default function Home() {
                 <h2 className="text-3xl font-bold mb-12 section-title">Experience</h2>
 
                 <div className="max-w-4xl">
+                  {/* Experience 0 */}
+                  <div className="timeline-item">
+                    <div className="mb-4">
+                      <h3 className="text-xl font-semibold mb-1">L2 Security Intern</h3>
+                      <p className="text-muted mb-1">Alto Network</p>
+                      <p className="text-sm text-muted">Mar 2026 – Present</p>
+                    </div>
+                  </div>
+
                   {/* Experience 1 */}
                   <div className="timeline-item">
                     <div className="mb-4">
