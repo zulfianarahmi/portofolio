@@ -1,6 +1,6 @@
 'use client'
 
-import { FiLoader } from 'react-icons/fi'
+import { FiChevronLeft, FiChevronRight, FiLoader } from 'react-icons/fi'
 import Image from 'next/image'
 import { Navigation } from '@/components/ui'
 import { useRef, useState, useEffect } from 'react'
@@ -22,6 +22,7 @@ export default function Home() {
   const [isLoadingArticles, setIsLoadingArticles] = useState(true)
   const [articlesError, setArticlesError] = useState<string | null>(null)
   const [theme, setTheme] = useState<'dark' | 'light'>('dark') // Default dark
+  const [activeActivity, setActiveActivity] = useState(0)
 
   const handleUnlock = () => {
     setIsLocked(false)
@@ -124,15 +125,110 @@ export default function Home() {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark')
   }
 
+  const previousActivity = () => {
+    setActiveActivity(prev => (prev === 0 ? activities.length - 1 : prev - 1))
+  }
+
+  const nextActivity = () => {
+    setActiveActivity(prev => (prev === activities.length - 1 ? 0 : prev + 1))
+  }
+
   const navItems = [
     { label: 'education', href: '#about' },
     { label: 'experience', href: '#experience' },
+    { label: 'leadership', href: '#leadership' },
     { label: 'skills', href: '#skills' },
     { label: 'projects', href: '#projects' },
     { label: 'certifications', href: '#certifications' },
     { label: 'writing', href: '#writing' },
+    { label: 'activities', href: '#activities' },
     { label: 'contact', href: '#contact' },
   ]
+
+  const activities = [
+    {
+      title: 'Indonesia AI Day 2025',
+      src: '/activities/ndonesia AI Day 2025  As a graduate of the Cisco Cybersecurity program through IDCamp 2024,.jpeg',
+      width: 960,
+      height: 1280
+    },
+    {
+      title: 'Indonesia AI Day 2025 - Cisco Cybersecurity Graduate',
+      src: '/activities/ndonesia AI Day 2025  As a graduate of the Cisco Cybersecurity program through IDCamp 2024, 2.jpeg',
+      width: 1280,
+      height: 960
+    },
+    {
+      title: 'Telkom CyberFest Vol. 2 - Cyber Showdown',
+      src: '/activities/Telkom CyberFest Vol. 2 - Cyber Showdown- Hack the Web or Hold the Line .jpeg',
+      width: 1280,
+      height: 720
+    },
+    {
+      title: 'COMPFEST 17 - Building Digital Resilience',
+      src: '/activities/Building Digital Resilience- A Practical Introduction to Cybersecurity di COMPFEST 17.jpeg',
+      width: 720,
+      height: 1280
+    },
+    {
+      title: 'Alibaba Cloud Indonesia GenAI Hackathon 2025',
+      src: '/activities/Alibaba Cloud Indonesia – GenAI Hackathon 2025, in partnership with GoTo.jpeg',
+      width: 720,
+      height: 1280
+    },
+    {
+      title: 'Telkom AI Space Vol.2 x Generation Girl',
+      src: '/activities/Telkom AI Space Vol.2 x Generation Girl- Beyond the Hype - Using AI the Right Way.jpeg',
+      width: 1280,
+      height: 645
+    },
+    {
+      title: 'Telkom AI Space Vol.2 x Generation Girl - Community Moment',
+      src: '/activities/Telkom AI Space Vol.2 x Generation Girl- Beyond the Hype - Using AI the Right Way 2.jpeg',
+      width: 1280,
+      height: 853
+    },
+    {
+      title: 'GDG Jakarta x Women Techmakers - International Women’s Day',
+      src: '/activities/GDG Jakarta and Women Techmakers for giving us a space to learn about AI and celebrate International Women\'s Day!.jpeg',
+      width: 2048,
+      height: 1365
+    },
+    {
+      title: 'AWS AI Hackathon Demo Day & Community Meetup',
+      src: '/activities/I attended the AWS AI Hackathon Demo Day and Community Meetup at AWS Indonesia office.jpeg',
+      width: 2048,
+      height: 1536
+    },
+    {
+      title: 'Codex Community Meetup Jakarta',
+      src: '/activities/Codex Community Meetup Jakarta.jpeg',
+      width: 1200,
+      height: 675
+    },
+    {
+      title: 'Offline Meetup of Power BI Community Indonesia',
+      src: '/activities/Offline Meetup of Power BI Community Indonesia.jpeg',
+      width: 4096,
+      height: 3072
+    },
+    {
+      title: 'Offline Meetup of Power BI Community Indonesia - Community Moment',
+      src: '/activities/Offline Meetup of Power BI Community Indonesia 2.jpeg',
+      width: 1179,
+      height: 1179
+    }
+  ]
+
+  useEffect(() => {
+    if (isLocked) return
+
+    const interval = setInterval(() => {
+      setActiveActivity(prev => (prev === activities.length - 1 ? 0 : prev + 1))
+    }, 4500)
+
+    return () => clearInterval(interval)
+  }, [isLocked, activities.length])
 
   return (
     <>
@@ -248,27 +344,32 @@ export default function Home() {
 
             <div className="divider"></div>
 
-            {/* Experience Section */}
+            {/* Professional Experience Section */}
             <section id="experience" className="section fade-in-up">
               <div className="container">
-                <h2 className="text-3xl font-bold mb-12 section-title">Experience</h2>
+                <h2 className="text-3xl font-bold mb-12 section-title">Professional Experience</h2>
 
                 <div className="max-w-4xl">
-                  {/* Experience 0 */}
                   <div className="timeline-item">
                     <div className="mb-4">
                       <h3 className="text-xl font-semibold mb-1">L2 Security Intern</h3>
                       <p className="text-muted mb-1">Alto Network</p>
                       <p className="text-sm text-muted">Mar 2026 – Present</p>
                     </div>
+                    <ul className="space-y-2 text-sm">
+                      <li>• Developed SIEM automation workflows using low-code orchestration tools to streamline alert handling, notifications, and repetitive security operations tasks</li>
+                      <li>• Supported endpoint security reporting by preparing recurring EDR visibility summaries and operational findings for internal review</li>
+                      <li>• Assisted with security platform administration documentation, including process notes, operational references, and division-level documentation support</li>
+                      <li>• Built reminder and notification automation for cloud security posture follow-up activities, improving task tracking and response discipline</li>
+                      <li>• Collaborated with security analysts and platform owners to translate operational needs into maintainable automation flows</li>
+                    </ul>
                   </div>
 
-                  {/* Experience 1 */}
                   <div className="timeline-item">
                     <div className="mb-4">
                       <h3 className="text-xl font-semibold mb-1">Cyber Security Engineer (Intern)</h3>
                       <p className="text-muted mb-1">Telkom Indonesia</p>
-                      <p className="text-sm text-muted">Aug 2025 – January 2026</p>
+                      <p className="text-sm text-muted">Aug 2025 – Jan 2026</p>
                     </div>
                     <ul className="space-y-2 text-sm">
                       <li>• Designed security automation workflows using workflow automation platforms to streamline cybersecurity operations</li>
@@ -278,7 +379,6 @@ export default function Home() {
                     </ul>
                   </div>
 
-                  {/* Experience 2 */}
                   <div className="timeline-item">
                     <div className="mb-4">
                       <h3 className="text-xl font-semibold mb-1">Administrative Staff</h3>
@@ -293,8 +393,44 @@ export default function Home() {
                       <li>• Contributed to the preparation of internal reports and audit documentation, ensuring alignment with organizational protocols</li>
                     </ul>
                   </div>
+                </div>
+              </div>
+            </section>
 
-                  {/* Experience 3 */}
+            <div className="divider"></div>
+
+            {/* Leadership & Programs Section */}
+            <section id="leadership" className="section fade-in-up">
+              <div className="container">
+                <h2 className="text-3xl font-bold mb-12 section-title">Leadership & Programs</h2>
+
+                <div className="max-w-4xl">
+                  <div className="timeline-item">
+                    <div className="mb-4">
+                      <h3 className="text-xl font-semibold mb-1">Lead Hunter</h3>
+                      <p className="text-muted mb-1">Project Ghost-Hunter - Futuremakers Youth Employability Programme</p>
+                      <p className="text-sm text-muted">2026</p>
+                    </div>
+                    <ul className="space-y-2 text-sm">
+                      <li>• Led a proactive threat hunting simulation for a FinTech-inspired infrastructure</li>
+                      <li>• Directed investigation workflows across ELK, Wazuh, Sysmon, Velociraptor, Zeek, Atomic Red Team, and dnscat2</li>
+                      <li>• Secured 2nd place in the Standard Chartered Foundation Futuremakers Youth Employability Programme</li>
+                    </ul>
+                  </div>
+
+                  <div className="timeline-item">
+                    <div className="mb-4">
+                      <h3 className="text-xl font-semibold mb-1">AI Backend / Data Engineer</h3>
+                      <p className="text-muted mb-1">Telkomathon Final Project</p>
+                      <p className="text-sm text-muted">2026</p>
+                    </div>
+                    <ul className="space-y-2 text-sm">
+                      <li>• Designed the modular LLM data flow for an AI-driven learning design automation system</li>
+                      <li>• Implemented document ingestion, PII sanitization, strict JSON guardrails, and final DOCX generation logic</li>
+                      <li>• Secured 3rd place with a B2B SaaS prototype for corporate learning design automation</li>
+                    </ul>
+                  </div>
+
                   <div className="timeline-item">
                     <div className="mb-4">
                       <h3 className="text-xl font-semibold mb-1">Group Leader – Technical A</h3>
@@ -307,7 +443,6 @@ export default function Home() {
                     </ul>
                   </div>
 
-                  {/* Experience 4 */}
                   <div className="timeline-item">
                     <div className="mb-4">
                       <h3 className="text-xl font-semibold mb-1">Project Manager (GDG Polsri Code 1)</h3>
@@ -322,11 +457,10 @@ export default function Home() {
                     </ul>
                   </div>
 
-                  {/* Experience 5 */}
                   <div className="timeline-item">
                     <div className="mb-4">
                       <h3 className="text-xl font-semibold mb-1">Project Manager & Backend Developer (Tim 2)</h3>
-                      <p className="text-muted mb-1">Google Developer Group Bootcamp - Universitas Gunardarma</p>
+                      <p className="text-muted mb-1">Google Developer Group Bootcamp - Universitas Gunadarma</p>
                       <p className="text-sm text-muted">Mar 2025</p>
                     </div>
                     <ul className="space-y-2 text-sm">
@@ -360,6 +494,8 @@ export default function Home() {
                     <h3 className="text-lg font-semibold mb-4 uppercase text-sm">Automation & Tools</h3>
                     <ul className="space-y-2 text-sm">
                       <li>• Workflow Automation Platforms</li>
+                      <li>• LLM Pipeline Design & Prompt Guardrails</li>
+                      <li>• Document Processing & PII Sanitization</li>
                       <li>• Python Scripting for Task Automation</li>
                       <li>• Basic Bash Shell Scripting</li>
                       <li>• Google Cloud & Oracle Cloud Infrastructure</li>
@@ -387,6 +523,21 @@ export default function Home() {
 
                 <div className="grid-2">
                   {[
+                    {
+                      title: 'AI-Driven Learning Design Automation System',
+                      description: 'B2B SaaS prototype for automating corporate training syllabus design using modular LLM pipelines, document ingestion, PII sanitization, and 70/20/10 learning framework compliance. Built as a Telkomathon final project and awarded 3rd place.',
+                      links: [
+                        { label: 'github', url: 'https://github.com/naufalrf4/telkomathon-5' },
+                        { label: 'winner post', url: 'https://www.instagram.com/p/DW6CmY5kvBq/' }
+                      ]
+                    },
+                    {
+                      title: 'Project Ghost-Hunter: Hybrid Threat Hunting Experiment',
+                      description: 'Led a proactive threat hunting simulation for a FinTech-inspired infrastructure, detecting multi-stage stealth attacks using LotL techniques and DNS tunneling. Built an open-source telemetry stack with ELK, Wazuh, Sysmon, Velociraptor, and Zeek, reducing detection visibility from >200 days industry dwell time to approximately 2 days. Secured 2nd place in the Standard Chartered Foundation Futuremakers Youth Employability Programme.',
+                      links: [
+                        { label: 'github', url: 'https://github.com/ndtsaniyah/DE_ProjectGhost-hunter/tree/main' }
+                      ]
+                    },
                     {
                       title: 'Web Application Penetration Testing (OWASP Juice Shop)',
                       description: 'Security assessment on OWASP Juice Shop identifying and exploiting vulnerabilities from OWASP Top 10.',
@@ -479,38 +630,40 @@ export default function Home() {
                   <div>
                     <h3 className="text-lg font-semibold mb-4 uppercase text-sm text-accent">Cybersecurity</h3>
                     <ul className="space-y-3 text-sm">
-                      <li>• Google - Connect and Protect: Networks and Network Security (Aug 2025)</li>
-                      <li>• Google - Foundations of Cybersecurity (Aug 2025)</li>
-                      <li>• Google - Play It Safe: Manage Security Risks (Aug 2025)</li>
-                      <li>• The Linux Foundation - Understanding the OWASP® Top 10 Security Threats SKF100 (2024)</li>
-                      <li>• Cisco - Cybersecurity Essentials (Jul 2024)</li>
+                      <li>• IDCamp Indosat Ooredoo Hutchison - Cybersecurity Essentials, Intermediate Level (Jun 2026 - Jun 2029)</li>
+                      <li>• TryHackMe - Jr Penetration Tester Certificate (Apr 2026 - Apr 2029)</li>
+                      <li>• Cisco - Junior Cybersecurity Analyst Career Path (Jun 2026)</li>
+                      <li>• ID-Networkers - Cyber Security Penetration Testing Bootcamp (Apr 2026)</li>
+                      <li>• Google Cybersecurity Certificate Courses - Foundations, Risk Management, and Network Security (2025)</li>
                     </ul>
                   </div>
 
                   {/* Cloud */}
                   <div>
-                    <h3 className="text-lg font-semibold mb-4 uppercase text-sm text-accent">Cloud</h3>
+                    <h3 className="text-lg font-semibold mb-4 uppercase text-sm text-accent">Cloud & AI</h3>
                     <ul className="space-y-3 text-sm">
-                      <li>• Oracle Cloud Certified (2024)</li>
-                      <li>• Cisco Cybersecurity & Networking (2024)</li>
+                      <li>• IDCamp Indosat Ooredoo Hutchison - Gen AI Engineer, Intermediate (Mar 2026)</li>
+                      <li>• Udacity - AWS AI Practitioner Challenge (Apr 2026)</li>
+                      <li>• Telkom Indonesia - Cloud Mentoring Class DCI 2025 (Jan 2026)</li>
+                      <li>• Dewacloud - Certified Cloud Developer Fundamental (Dec 2025)</li>
                     </ul>
                   </div>
 
-                  {/* Data */}
+                  {/* Governance */}
                   <div>
-                    <h3 className="text-lg font-semibold mb-4 uppercase text-sm text-accent">Data</h3>
+                    <h3 className="text-lg font-semibold mb-4 uppercase text-sm text-accent">Security Governance</h3>
                     <ul className="space-y-3 text-sm">
-                      <li>• IBM Database Admin (2024)</li>
-                      <li>• MySQL Bootcamp (2024)</li>
-                      <li>• Python Data Analysis (2024)</li>
+                      <li>• Qualys - PCI Compliance (May 2026)</li>
+                      <li>• NIST - SP 800-53 Security and Privacy Controls (May 2026)</li>
+                      <li>• The Linux Foundation - Understanding the OWASP® Top 10 Security Threats SKF100 (2024)</li>
                     </ul>
                   </div>
 
-                  {/* Leadership */}
+                  {/* Language */}
                   <div>
-                    <h3 className="text-lg font-semibold mb-4 uppercase text-sm text-accent">Leadership</h3>
+                    <h3 className="text-lg font-semibold mb-4 uppercase text-sm text-accent">Language</h3>
                     <ul className="space-y-3 text-sm">
-                      <li>• UNDP +LEADers (2025)</li>
+                      <li>• EF SET - English Certificate, 69/100 (Jan 2026)</li>
                     </ul>
                   </div>
                 </div>
@@ -577,6 +730,70 @@ export default function Home() {
                     <p className="text-sm text-muted">No articles found.</p>
                   </div>
                 )}
+              </div>
+            </section>
+
+            <div className="divider"></div>
+
+            {/* Activities Section */}
+            <section id="activities" className="section fade-in-up">
+              <div className="container">
+                <div className="mb-12">
+                  <h2 className="text-3xl font-bold mb-4 section-title">Activities & Milestones</h2>
+                  <p className="text-sm text-muted max-w-2xl">
+                    A small archive of communities, meetups, hackathons, and learning moments I joined along the way.
+                  </p>
+                </div>
+
+                <div className="max-w-4xl">
+                  <div className="card overflow-hidden p-0">
+                    <div className="relative bg-surface">
+                      <Image
+                        src={activities[activeActivity].src}
+                        alt={activities[activeActivity].title}
+                        width={activities[activeActivity].width}
+                        height={activities[activeActivity].height}
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="h-[360px] w-full object-contain"
+                      />
+
+                      <button
+                        type="button"
+                        onClick={previousActivity}
+                        className="absolute left-3 top-1/2 -translate-y-1/2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-bg-primary/80 text-accent border-1 hover:bg-accent hover:text-bg-primary transition-colors"
+                        aria-label="Previous activity"
+                      >
+                        <FiChevronLeft />
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={nextActivity}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-bg-primary/80 text-accent border-1 hover:bg-accent hover:text-bg-primary transition-colors"
+                        aria-label="Next activity"
+                      >
+                        <FiChevronRight />
+                      </button>
+                    </div>
+
+                    <div className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
+                      <p className="text-sm text-muted">
+                        {activities[activeActivity].title}
+                      </p>
+                      <div className="flex items-center gap-2">
+                        {activities.map((activity, i) => (
+                          <button
+                            key={activity.title}
+                            type="button"
+                            onClick={() => setActiveActivity(i)}
+                            className={`h-2.5 w-2.5 rounded-full transition-colors ${i === activeActivity ? 'bg-accent' : 'bg-muted/40 hover:bg-muted'}`}
+                            aria-label={`Show ${activity.title}`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </section>
 
