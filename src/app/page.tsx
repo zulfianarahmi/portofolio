@@ -433,6 +433,20 @@ export default function Home() {
 
                   <div className="timeline-item">
                     <div className="mb-4">
+                      <h3 className="text-xl font-semibold mb-1">Fasilitator Google Cloud Arcade 2025</h3>
+                      <p className="text-muted mb-1">Google · Contract · Remote</p>
+                      <p className="text-sm text-muted">Jul 2025 – Sep 2025</p>
+                    </div>
+                    <ul className="space-y-2 text-sm">
+                      <li>• Mentored participants in understanding Google Cloud Arcade concepts, cloud technologies, and hands-on lab workflows</li>
+                      <li>• Supported participant skill development across cloud computing, artificial intelligence, machine learning, and data engineering</li>
+                      <li>• Assisted learners in navigating the Arcade platform, completing labs, and resolving technical or conceptual blockers</li>
+                      <li>• Fostered community engagement and collaborative learning throughout the program</li>
+                    </ul>
+                  </div>
+
+                  <div className="timeline-item">
+                    <div className="mb-4">
                       <h3 className="text-xl font-semibold mb-1">Group Leader – Technical A</h3>
                       <p className="text-muted mb-1">Women in Tech Security Mentorship Program 2025</p>
                       <p className="text-sm text-muted">Jun 2025 – Jul 2025</p>
