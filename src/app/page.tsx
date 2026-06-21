@@ -165,6 +165,24 @@ export default function Home() {
       height: 720
     },
     {
+      title: 'Futuremakers Youth Employability Programme - 2nd Place Winner',
+      src: '/activities/2nd Place Winner - Capstone Project Presentation | Futuremakers Youth Employability Programme.jpeg',
+      width: 1600,
+      height: 736
+    },
+    {
+      title: 'Digistar Intern',
+      src: '/activities/Digistar Intern.jpeg',
+      width: 1600,
+      height: 899
+    },
+    {
+      title: 'DevOps Focus Group Offline Event',
+      src: '/activities/DevOps Focus Group Offline Event.png',
+      width: 716,
+      height: 534
+    },
+    {
       title: 'COMPFEST 17 - Building Digital Resilience',
       src: '/activities/Building Digital Resilience- A Practical Introduction to Cybersecurity di COMPFEST 17.jpeg',
       width: 720,
@@ -193,6 +211,30 @@ export default function Home() {
       src: '/activities/GDG Jakarta and Women Techmakers for giving us a space to learn about AI and celebrate International Women\'s Day!.jpeg',
       width: 2048,
       height: 1365
+    },
+    {
+      title: 'Community activity photo',
+      src: '/activities/G51t41sa8AAnz9k.jpeg',
+      width: 1366,
+      height: 615
+    },
+    {
+      title: 'Community activity photo',
+      src: '/activities/G3dUAKtW0AA_xQk.jpeg',
+      width: 1366,
+      height: 708
+    },
+    {
+      title: 'Community activity photo',
+      src: '/activities/GxQb-0SaIAE9Ewq.jpeg',
+      width: 1076,
+      height: 577
+    },
+    {
+      title: 'Community activity photo',
+      src: '/activities/G38ntziW4AEVo6z.jpeg',
+      width: 1536,
+      height: 2048
     },
     {
       title: 'AWS AI Hackathon Demo Day & Community Meetup',
@@ -790,14 +832,11 @@ export default function Home() {
                       </button>
                     </div>
 
-                    <div className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
-                      <p className="text-sm text-muted">
-                        {activities[activeActivity].title}
-                      </p>
-                      <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-center gap-2 p-4">
+                      <div className="flex flex-wrap items-center justify-center gap-2">
                         {activities.map((activity, i) => (
                           <button
-                            key={activity.title}
+                            key={activity.src}
                             type="button"
                             onClick={() => setActiveActivity(i)}
                             className={`h-2.5 w-2.5 rounded-full transition-colors ${i === activeActivity ? 'bg-accent' : 'bg-muted/40 hover:bg-muted'}`}
